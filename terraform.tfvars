@@ -1,0 +1,11 @@
+vpc_name      = "love"
+cidr_block    = "19.0.0.0/16"
+region        = "us-east-1"
+inbound_ports = [22, 80, 443]
+alb-sg        = "my_alb_sg"
+key_name      = "mykey"
+domain        = "praestohealth.com.ng"
+a-record      = "terraform-test.praestohealth.com.ng"
+instance_type = "t2.micro"
+ami           = "ami-0b5eea76982371e91"
+filepath      = "/test/host-inventory"
