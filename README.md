@@ -33,4 +33,7 @@
 Kindly see code in repository
 
 #Final Output
-
+![ansibleplybk](https://user-images.githubusercontent.com/99274632/216162556-c9e63f69-873f-4565-adf5-7ff25059a6f4.PNG)
+![yes-first](https://user-images.githubusercontent.com/99274632/216162590-fe8e2fb2-943f-4f44-b8b9-89dcf79e10f3.PNG)
+![yes-third](https://user-images.githubusercontent.com/99274632/216162626-5ee8788b-ad94-454e-8cd2-9b0ac82452b1.PNG)
+![yes-2nd](https://user-images.githubusercontent.com/99274632/216162614-50e4f0be-1a7f-4a8b-8616-b149317205bf.PNG)
