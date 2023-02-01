@@ -1,5 +1,5 @@
 variable "privsubnet" {
-  type = string
+  type        = string
   description = "list of my priv subnets cidr"
 }
 
@@ -12,7 +12,7 @@ variable "azs" {
   type        = list(string)
   description = "azs"
 }
-  
+
 variable "cidr_block" {
   type        = string
   description = "my vpc cidr block"
