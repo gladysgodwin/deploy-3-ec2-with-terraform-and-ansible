@@ -10,10 +10,48 @@ resource "aws_vpc" "myprivNet" {
   }
 }
 
-resource "aws_subnet" "myprivNet" {
-  for_each = var.subnets
+resource "aws_subnet" "Public1a" {
+  vpc_id                  = aws_vpc.myprivNet.id
+  cidr_block              = element(var.pubsubnets, 0)
+  map_public_ip_on_launch = true
+  availability_zone       = element(var.azs, 0)
 
-  cidr_block              = each.value["cidr"]
+  tags = {
+    Name = "Public1"
+  }
+}
+
+#Create Public subnet #2
+resource "aws_subnet" "Public2b" {
+  vpc_id                  = aws_vpc.myprivNet.id
+  cidr_block              = element(var.pubsubnets, 1)
+  map_public_ip_on_launch = true
+  availability_zone       = element(var.azs, 1)
+
+
+  tags = {
+    Name = "Public2b"
+  }
+}
+
+#Create Private subnet #1
+resource "aws_subnet" "Private1c" {
+  vpc_id                  = aws_vpc.myprivNet.id
+  cidr_block              = var.privsubnet
+  map_public_ip_on_launch = false
+  availability_zone       = element(var.azs, 2)
+
+
+  tags = {
+    Name = "Private1c"
+  }
+}
+
+/*
+resource "aws_subnet" "myprivNet" {
+  for_each = var.azs
+
+  cidr_block              = element(var.subnets, 04)
   vpc_id                  = aws_vpc.myprivNet.id
   availability_zone       = each.value["az"]
   map_public_ip_on_launch = true
@@ -21,7 +59,7 @@ resource "aws_subnet" "myprivNet" {
     Name = "${each.key}"
   }
 }
-
+*/
 resource "aws_internet_gateway" "love-igw" {
   vpc_id = aws_vpc.myprivNet.id
 
@@ -52,17 +90,16 @@ resource "aws_route_table" "privateRT" {
 }
 
 resource "aws_route_table_association" "public-association" {
-  for_each       = aws_subnet.myprivNet
   route_table_id = aws_route_table.publicRT.id
-  subnet_id      = each.value.id
+  subnet_id      = aws_subnet.Public1a.id
 }
 
-/*
-resource "aws_route_table_association" "private-association" {
-  for_each       = aws_subnet.myprivNet
-  route_table_id = aws_route_table.privateRT.id
-  subnet_id      = each.value.index.id
+
+resource "aws_route_table_association" "public-association2" {
+  route_table_id = aws_route_table.publicRT.id
+  subnet_id      = aws_subnet.Public2b.id
 }
-*/
+
+
 
 

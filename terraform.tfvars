@@ -9,3 +9,6 @@ a-record      = "terraform-test.praestohealth.com.ng"
 instance_type = "t2.micro"
 ami           = "ami-0b5eea76982371e91"
 filepath      = "/test/host-inventory"
+privsubnet    = "19.0.1.0/24"
+pubsubnets    = [ "19.0.2.0/24", "19.0.3.0/24" ]
+azs           = [ "us-east-1a", "us-east-1b", "us-east-1c" ]

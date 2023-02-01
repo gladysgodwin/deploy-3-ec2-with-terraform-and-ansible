@@ -3,8 +3,7 @@ resource "aws_lb" "my-alb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.my_alb_sg.id]
-  subnets            = [for subnet in aws_subnet.myprivNet : subnet.id]
-
+  subnets            = [aws_subnet.Public1a.id, aws_subnet.Public2b.id]
   depends_on = [
     aws_instance.server1,
     aws_instance.server2,

@@ -1,22 +1,18 @@
-variable "subnets" {
-  type = map(any)
-  default = {
-    subnet-a = {
-      az   = "us-east-1a"
-      cidr = "19.0.1.0/24"
-    }
-    subnet-b = {
-      az   = "us-east-1b"
-      cidr = "19.0.2.0/24"
-    }
-    subnet-c = {
-      az   = "us-east-1c"
-      cidr = "19.0.3.0/24"
-    }
-
-  }
+variable "privsubnet" {
+  type = string
+  description = "list of my priv subnets cidr"
 }
 
+variable "pubsubnets" {
+  type        = list(string)
+  description = "my public subnets cidr"
+}
+
+variable "azs" {
+  type        = list(string)
+  description = "azs"
+}
+  
 variable "cidr_block" {
   type        = string
   description = "my vpc cidr block"
