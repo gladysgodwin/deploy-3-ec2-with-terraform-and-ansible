@@ -7,12 +7,6 @@ resource "aws_instance" "server1" {
   tags = {
     Name = "love"
   }
-
-  provisioner "local-exec" {
-
-    command = "echo ${self.public_ip} >> ./host-inventory"
-
-  }
 }
 
 resource "aws_instance" "server2" {
@@ -23,11 +17,6 @@ resource "aws_instance" "server2" {
   key_name        = "help"
   tags = {
     Name = "love2"
-  }
-  provisioner "local-exec" {
-
-    command = "echo ${self.public_ip} >> ./host-inventory"
-
   }
 }
 
@@ -40,11 +29,5 @@ resource "aws_instance" "server3" {
 
   tags = {
     Name = "love3"
-  }
-
-  provisioner "local-exec" {
-
-    command = "echo ${self.public_ip} >> ./host-inventory.txt"
-
   }
 }
